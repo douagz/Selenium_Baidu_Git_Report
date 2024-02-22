@@ -5,5 +5,5 @@ phrases:
     expected_title: 'Munger_百度搜索'
 
   - id: 2
-    phrase: 'playwright'
-    expected_title: 'playwright_百度搜索'
+    phrase: 'selenium'
+    expected_title: 'selenium_百度搜索'
