@@ -1,5 +1,5 @@
 import pytest
-from baidu_search.common.load_baidu_search_data import load_baidu_search_data
+from common.load_baidu_search_data import load_baidu_search_data
 
 
 class TestBaiduSearch:
