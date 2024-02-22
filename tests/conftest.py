@@ -1,5 +1,5 @@
 import pytest
-from pages.search import SearchPage
+from ..pages.search import SearchPage
 from pages.result import ResultPage
 from selenium import webdriver
 
