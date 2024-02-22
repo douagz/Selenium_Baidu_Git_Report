@@ -1,6 +1,6 @@
 import pytest
-from baidu_search.pages.search_page import SearchPage
-from baidu_search.pages.result_page import ResultPage
+from pages.search_page import SearchPage
+from pages.result_page import ResultPage
 from selenium import webdriver
 
 driver=None
