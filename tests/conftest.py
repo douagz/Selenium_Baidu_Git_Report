@@ -1,15 +1,30 @@
-import pytest, sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from pages.result import BaiduResultPage
-from pages.search import BaiduSearchPage
-from playwright.sync_api import Page
+import pytest
+from baidu_search.pages.search_page import SearchPage
+from baidu_search.pages.result_page import ResultPage
+from selenium import webdriver
 
+driver=None
 
-@pytest.fixture
-def search_page(page):
-    return BaiduSearchPage(page)
+@pytest.fixture(scope="session",autouse=False)
+def baidu_driver():
+    global driver
+    if driver is None:
+        options = webdriver.ChromeOptions()
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--implicit=10')
+        options.add_experimental_option("useAutomationExtension", False)
+        options.add_experimental_option('excludeSwitches', ['enable-automation'])
 
+        driver = webdriver.Chrome(options=options)
+        driver.implicitly_wait(30)
+    return driver
 
-@pytest.fixture
-def result_page(page):
-    return BaiduResultPage(page)
+@pytest.fixture(scope="session",autouse=False)
+def baidu_search_page(baidu_driver):
+    baidu_search_page=SearchPage(baidu_driver)
+    return baidu_search_page
+
+@pytest.fixture(scope="session",autouse=False)
+def baidu_result_page(baidu_driver):
+    baidu_result_page=ResultPage(baidu_driver)
+    return baidu_result_page
