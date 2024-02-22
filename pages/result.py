@@ -1,21 +1,20 @@
-from playwright.sync_api import Page
+from baidu_search.pages.base_page import BasePage
+from selenium.webdriver.common.by import By
 
-
-class BaiduResultPage:
-
-    def __init__(self, page):
-        self.page=page
-        self.search_input=page.locator("#kw")
-        self.result_links=page.locator("h3.c-title>a")
+class ResultPage(BasePage):
+    search_input = (By.CSS_SELECTOR, "#kw")
+    result_links = (By.CSS_SELECTOR, "h3.c-title>a")
 
     def result_link_titles(self):
-        self.result_links.nth(4).wait_for()
-        return self.result_links.all_text_contents()
+        elements = self.find_elements(self.result_links)
+        titles = []
+        for e in elements:
+            titles.append(e.text)
+        return titles
 
     def result_link_titles_contain_phrase(self, phrase):
-        titles=self.result_link_titles()
-        match_titles=[m for m in titles if phrase.lower() in m.lower()]
-        return len(match_titles)>0
-
+        titles = self.result_link_titles()
+        match_titles = [m for m in titles if phrase.lower() in m.lower()]
+        return len(match_titles) > 0
 
 
