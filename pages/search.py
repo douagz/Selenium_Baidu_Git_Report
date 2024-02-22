@@ -1,18 +1,17 @@
-from playwright.sync_api import Page
-from config.config import Config
+from baidu_search.pages.base_page import BasePage
+from selenium.webdriver.common.by import By
+import time
 
-
-class BaiduSearchPage:
-
-
-    def __init__(self, page):
-        self.page = page
-        self.search_input = page.locator("#kw")
-        self.search_button = page.locator("#su")
+class SearchPage(BasePage):
+    url="https://baidu.com"
+    search_input = (By.CSS_SELECTOR, "#kw")
+    search_button = (By.CSS_SELECTOR, "#su")
 
     def load(self):
-        self.page.goto(Config.url)
+        self.access(self.url)
 
     def search(self, phrase):
-        self.search_input.fill(phrase)
-        self.search_button.click()
+        self.find_element(self.search_input).clear()
+        self.find_element(self.search_input).send_keys(phrase)
+        self.find_element(self.search_button).click()
+        time.sleep(5)
