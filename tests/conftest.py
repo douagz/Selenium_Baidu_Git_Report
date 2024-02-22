@@ -1,6 +1,6 @@
 import pytest
-from pages.search_page import SearchPage
-from pages.result_page import ResultPage
+from pages.search import SearchPage
+from pages.result import ResultPage
 from selenium import webdriver
 
 driver=None
