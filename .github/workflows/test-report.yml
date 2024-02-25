@@ -34,7 +34,7 @@ jobs:
         pwd && ls
         sudo cp -p ./chromedriver /usr/bin/
         chmod -R 777 /usr/bin/chromedriver
-        ls -al /usr/bin/*chrome*
+        ls -al /etc/alternatives/google-chrome
         #sudo apt-get install -y chromium-browser
       
     - name: Test with pytest
