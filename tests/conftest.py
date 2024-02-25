@@ -9,13 +9,14 @@ driver=None
 def baidu_driver():
     global driver
     if driver is None:
-        options = webdriver.ChromeOptions()
-        options.add_argument('--window-size=1920,1080')
-        options.add_argument('--implicit=10')
-        options.add_experimental_option("useAutomationExtension", False)
-        options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        #options = webdriver.ChromeOptions()
+        #options.add_argument('--window-size=1920,1080')
+        #options.add_argument('--implicit=10')
+        #options.add_experimental_option("useAutomationExtension", False)
+        #options.add_experimental_option('excludeSwitches', ['enable-automation'])
 
-        driver = webdriver.Chrome(options=options)
+        #driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome()
         driver.implicitly_wait(30)
     return driver
 
