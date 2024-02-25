@@ -32,8 +32,8 @@ jobs:
     - name: Install-Chrome
       run: |
         pwd && ls
-        #sudo cp -p ./chromedriver /usr/bin/
-        #chmod -R 777 /usr/bin/chromedriver
+        sudo cp -p ./chromedriver /usr/bin/
+        chmod -R 777 /usr/bin/chromedriver
         ls -al /opt/google/chrome/google-chrome
         #sudo apt-get install -y chromium-browser
       
